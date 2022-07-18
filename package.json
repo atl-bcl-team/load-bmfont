@@ -3,11 +3,7 @@
   "version": "1.4.1",
   "description": "loads a BMFont file in Node and the browser",
   "main": "dist/index.js",
-  "browser": {
-    "fs": false,
-    "path": false,
-    "os": false
-  },
+  "browser": "browser.js",
   "license": "MIT",
   "author": {
     "name": "Matt DesLauriers",

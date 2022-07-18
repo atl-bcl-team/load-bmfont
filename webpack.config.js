@@ -12,7 +12,7 @@ module.exports = {
         }
     },
     entry: {
-        index: path.resolve(__dirname, 'index.js')
+        index: path.resolve(__dirname, 'browser.js')
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
