@@ -1,2 +1,2 @@
-import { loadFont } from "./lib/load-font";
+import { loadFont } from "./lib/index";
 export { loadFont };
