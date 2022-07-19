@@ -9,7 +9,7 @@
   <body>
 	<script src="bundle.js"></script>
     <script>
-        const loadFont = require('load-bmfont');
+        const loadFont = require('./bundle.js');
         loadFont('fnt/Lato-Regular-32.fnt', (_, font) => {
             console.log(font);
         })
