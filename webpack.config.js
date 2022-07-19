@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require("webpack");
 
 module.exports = {
     mode: 'production',
@@ -8,7 +9,8 @@ module.exports = {
             "https": require.resolve("https-browserify"),
             "http": require.resolve("stream-http"),
             "path": require.resolve("path-browserify"),
-            "stream": require.resolve("stream-browserify")
+            "stream": require.resolve("stream-browserify"),
+            "buffer": require.resolve('buffer')        
         }
     },
     entry: {
@@ -22,24 +24,29 @@ module.exports = {
     devtool: 'source-map',
     devServer: {
         static: {
-            directory: path.resolve(__dirname, 'dist'),
+            directory: path.resolve(__dirname, ''),
         },
         port: 3000,
         open: true,
         hot: true,
         compress: true,
         historyApiFallback: true,
-        module: {
-            rules: [{
-                test: /\.js$/,
-                exclude: /node_modules/,
-                use: {
-                    loader: 'babel-loader',
-                    options: {
-                        presets: ['@babel/preset-env'],
-                    },
-                },
-            }, ]
-        }
     },
+    plugins: [
+        new webpack.ProvidePlugin({
+            Buffer: ['buffer', 'Buffer'],
+        })
+    ],
+    module: {
+        rules: [{
+            test: /\.js$/,
+            exclude: /node_modules/,
+            use: {
+                loader: 'babel-loader',
+                options: {
+                    presets: ['@babel/preset-env'],
+                },
+            },
+        }, ]
+    }
 };

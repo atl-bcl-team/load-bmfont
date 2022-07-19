@@ -10,7 +10,7 @@ var xml2 = (function hasXML2() {
   return self.XMLHttpRequest && "withCredentials" in new XMLHttpRequest
 })()
 
-module.exports = function(opt, cb) {
+const loadBMFont = function(opt, cb) {
   cb = typeof cb === 'function' ? cb : noop
 
   if (typeof opt === 'string')
@@ -74,6 +74,8 @@ module.exports = function(opt, cb) {
     cb(null, result)
   })
 }
+
+module.exports = loadBMFont;
 
 function isArrayBuffer(arr) {
   var str = Object.prototype.toString
