@@ -2,13 +2,13 @@
   "name": "load-bmfont",
   "version": "1.4.1",
   "description": "loads a BMFont file in Node and the browser",
-  "main": "dist/index.js",
   "license": "MIT",
   "author": {
     "name": "Matt DesLauriers",
     "email": "dave.des@gmail.com",
     "url": "https://github.com/mattdesl"
   },
+  "main": "dist/index.js",
   "dependencies": {
     "buffer-equal": "0.0.1",
     "mime": "^3.0.0",

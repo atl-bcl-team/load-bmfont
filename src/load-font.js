@@ -3,14 +3,14 @@ var noop = function(){}
 var parseASCII = require('parse-bmfont-ascii')
 var parseXML = require('parse-bmfont-xml')
 var readBinary = require('parse-bmfont-binary')
-import { isBinaryFormat } from './is-binary';
+import { isBinaryFormat } from './is-binary.js';
 var xtend = require('xtend')
 
 var xml2 = (function hasXML2() {
   return self.XMLHttpRequest && "withCredentials" in new XMLHttpRequest
 })()
 
-export function loadFont(opt, cb) {
+export default function(opt, cb) {
   cb = typeof cb === 'function' ? cb : noop
 
   if (typeof opt === 'string')
