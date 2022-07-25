@@ -8,16 +8,9 @@
     "email": "dave.des@gmail.com",
     "url": "https://github.com/mattdesl"
   },
-  "main": "dist/index.js",
+  "main": "dist/load-font.module.min.js",
   "dependencies": {
-    "buffer-equal": "0.0.1",
-    "mime": "^3.0.0",
-    "parse-bmfont-ascii": "^1.0.3",
-    "parse-bmfont-binary": "^1.0.5",
-    "parse-bmfont-xml": "^1.1.4",
-    "phin": "^3.6.1",
-    "xhr": "^2.0.1",
-    "xtend": "^4.0.0"
+    "mime": "^3.0.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.14.8",
@@ -33,6 +26,7 @@
     "browserify-zlib": "^0.2.0",
     "buffer": "^6.0.3",
     "https-browserify": "^1.0.0",
+    "terser-webpack-plugin": "^5.3.3",
     "live-server": "^1.2.2",
     "path-browserify": "^1.0.1",
     "stream-browserify": "^3.0.0",

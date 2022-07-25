@@ -5,3 +5,5 @@ node_modules
 bundle.js
 test
 test.html
+tester.js
+index.html

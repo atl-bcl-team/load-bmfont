@@ -1,25 +1,41 @@
 const path = require('path');
 const webpack = require("webpack");
+const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = {
+    target: 'node',
     mode: 'production',
     resolve: {
         fallback: {
-            "zlib": require.resolve("browserify-zlib"),
-            "https": require.resolve("https-browserify"),
-            "http": require.resolve("stream-http"),
-            "path": require.resolve("path-browserify"),
-            "stream": require.resolve("stream-browserify"),
             "buffer": require.resolve('buffer')        
         }
     },
-    entry: {
-        index: path.resolve(__dirname, 'src/index.js')
-    },
+    optimization: {
+		minimize: true,
+		minimizer: [
+			new TerserPlugin({
+				test: /\.js(\?.*)?$/i,
+
+				// only minimize .min.js files
+				include: /\.min\.js$/,
+				extractComments: 'some'
+			}),
+		],
+	},
+	entry: {
+		'/load-font.module': './src/load-font.js',
+		'/load-font.module.min': './src/load-font.js',
+	},
     output: {
-        path: path.resolve(__dirname, 'dist'),
-        filename: 'index.js',
+		filename: '[name].js',
         clean: true,
+        chunkFormat: 'module',
+		library: {
+			type: 'module',
+		}
+    },
+    experiments: {
+        outputModule: true
     },
     devtool: 'source-map',
     devServer: {
