@@ -9,8 +9,6 @@ var noop = function() {}
 function parseFont(file, data, cb) {
   var result, binary
   // console.log(file);
-  // console.log(data);
-
   if (isBinaryFormat(data)) {
     if (typeof data === 'string') data = Buffer.from(data, 'binary')
     binary = true
@@ -29,7 +27,6 @@ function parseFont(file, data, cb) {
     cb(e)
     cb = noop
   }
-
   cb(null, result)
 }
 

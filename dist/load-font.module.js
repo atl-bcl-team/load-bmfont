@@ -2548,17 +2548,6 @@ module.exports = {"application/andrew-inset":["ez"],"application/applixware":["a
 /******/ 	__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
 /******/ })();
 /******/ 
-/******/ /* webpack/runtime/make namespace object */
-/******/ (() => {
-/******/ 	// define __esModule on exports
-/******/ 	__webpack_require__.r = (exports) => {
-/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
-/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
-/******/ 		}
-/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
-/******/ 	};
-/******/ })();
-/******/ 
 /************************************************************************/
 var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
@@ -2567,13 +2556,6 @@ var __webpack_exports__ = {};
 // EXPORTS
 __webpack_require__.d(__webpack_exports__, {
   "m": () => (/* binding */ loadFont)
-});
-
-// NAMESPACE OBJECT: ./src/xml-parse-from-string.js
-var xml_parse_from_string_namespaceObject = {};
-__webpack_require__.r(xml_parse_from_string_namespaceObject);
-__webpack_require__.d(xml_parse_from_string_namespaceObject, {
-  "default": () => (xml_parse_from_string)
 });
 
 ;// CONCATENATED MODULE: ./src/parse-bmfont-ascii.js
@@ -2692,7 +2674,7 @@ function parse_attribs_parseIntList(data) {
   });
 }
 ;// CONCATENATED MODULE: ./src/xml-parse-from-string.js
-/* harmony default export */ const xml_parse_from_string = ((function xmlparser() {
+function xmlparser() {
   //common browsers
   if (typeof self.DOMParser !== 'undefined') {
     return function (str) {
@@ -2717,7 +2699,12 @@ function parse_attribs_parseIntList(data) {
     div.innerHTML = str;
     return div;
   };
-})());
+}
+
+function parseFromString(data) {
+  var func = xmlparser();
+  return func(data);
+}
 ;// CONCATENATED MODULE: ./src/parse-bmfont-xml.js
 
  //In some cases element.attribute.nodeName can return
@@ -2736,7 +2723,8 @@ var NAME_MAP = {
 };
 function parseXML(data) {
   data = data.toString();
-  var xmlRoot = xml_parse_from_string_namespaceObject(data);
+  var xmlRoot = parseFromString(data); // console.log(xmlRoot);
+
   var output = {
     pages: [],
     chars: [],
@@ -2998,7 +2986,6 @@ var noop = function noop() {};
 
 function parseFont(file, data, cb) {
   var result, binary; // console.log(file);
-  // console.log(data);
 
   if (isBinaryFormat(data)) {
     if (typeof data === 'string') data = buffer/* Buffer.from */.lW.from(data, 'binary');
@@ -3035,5 +3022,3 @@ function loadFont(opt, cb) {
 
 var __webpack_exports__loadFont = __webpack_exports__.m;
 export { __webpack_exports__loadFont as loadFont };
-
-//# sourceMappingURL=load-font.module.js.map

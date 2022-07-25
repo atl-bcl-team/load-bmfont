@@ -1,5 +1,5 @@
 import { parseAttributes } from './parse-attribs';
-import * as parseFromString from './xml-parse-from-string';
+import { parseFromString } from './xml-parse-from-string';
 
 //In some cases element.attribute.nodeName can return
 //all lowercase values.. so we need to map them to the correct 
@@ -17,8 +17,9 @@ var NAME_MAP = {
 
 export function parseXML(data) {
   data = data.toString()
-  
   var xmlRoot = parseFromString(data)
+  // console.log(xmlRoot);
+
   var output = {
     pages: [],
     chars: [],

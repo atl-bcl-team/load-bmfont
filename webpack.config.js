@@ -37,7 +37,7 @@ module.exports = {
     experiments: {
         outputModule: true
     },
-    devtool: 'source-map',
+    // devtool: 'source-map',
     devServer: {
         static: {
             directory: path.resolve(__dirname, ''),
