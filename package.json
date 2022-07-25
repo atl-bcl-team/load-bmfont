@@ -8,7 +8,7 @@
     "email": "dave.des@gmail.com",
     "url": "https://github.com/mattdesl"
   },
-  "main": "dist/load-font.module.js",
+  "main": "dist/load-font.module.min.js",
   "dependencies": {
     "mime": "^3.0.0"
   },
